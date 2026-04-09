@@ -18,7 +18,7 @@
     "eyebrow": "Back-end Developer with Front-end experience.",
     "description": "I build backend systems, databases, and business applications, with enough frontend experience to support complete web solutions.",
     "actions": [
-      { "label": "View Work", "href": "#work", "variant": "pimary" }
+      { "label": "View Work", "href": "#work", "variant": "primary" }
     ]
   },
   "proof": {
@@ -74,7 +74,6 @@
       },
       {
         "title": "School Portal (On-Going)",
-        "url": "https://captured-by-jeys.vercel.app",
         "description": [
           "A on-going project to build a school portal system that includes student information management, class scheduling, and communication tools.",
           "This project is based on my school thesis project and is being developed to improve my skills in building full-stack applications with a focus on backend development and database design."
