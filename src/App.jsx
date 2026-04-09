@@ -16,7 +16,15 @@ function WorkItem({ index, item }) {
     <article className="work-item">
       <span className="work-index">{String(index + 1).padStart(2, "0")}</span>
       <div>
-        <h3>{item.title}</h3>
+        <h3>
+          {item.url ? (
+            <a href={item.url} target="_blank" rel="noopener noreferrer">
+              <u>{item.title}</u>
+            </a>
+          ) : (
+            item.title
+          )}
+        </h3>
         {item.description.map((paragraph) => (
           <p key={paragraph} className="project-paragraph">
             {paragraph}

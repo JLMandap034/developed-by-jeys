@@ -52,7 +52,9 @@
       },
       {
         "title": "Internal Dashboard Tools",
-        "description": "An inhouse dashboard system that is used to track time-in and time-out, manage employee information, and generate reports for HR and management use.",
+        "description": [
+          "An inhouse dashboard system that is used to track time-in and time-out, manage employee information, and generate reports for HR and management use."
+        ],
         "stack": ["Laravel", "Vue.js", "JavaScript"]
       }
     ]
