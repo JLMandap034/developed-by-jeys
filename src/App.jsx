@@ -17,7 +17,11 @@ function WorkItem({ index, item }) {
       <span className="work-index">{String(index + 1).padStart(2, "0")}</span>
       <div>
         <h3>{item.title}</h3>
-        <p>{item.description}</p>
+        {item.description.map((paragraph) => (
+          <p key={paragraph} className="project-paragraph">
+            {paragraph}
+          </p>
+        ))}
       </div>
       <p className="work-stack">{item.stack.join(" / ")}</p>
     </article>
