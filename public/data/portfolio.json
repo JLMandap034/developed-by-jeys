@@ -1,0 +1,146 @@
+{
+  "meta": {
+    "title": "Developed By Jeys",
+    "description": "Portfolio landing page for JEYS, a back-end developer with frontend experience building reliable systems, business tools, and modern web applications."
+  },
+  "brand": {
+    "logo": "/favicon.svg",
+    "logoAlt": "JEYS logo"
+  },
+  "navigation": [
+    { "label": "Work", "href": "#work" },
+    { "label": "Stack", "href": "#stack" },
+    { "label": "Process", "href": "#process" },
+    { "label": "Contact", "href": "#contact" }
+  ],
+  "hero": {
+    "intro": "Hello, I'm Jeys",
+    "eyebrow": "Back-end Developer with Front-end experience.",
+    "description": "I build backend systems, databases, and business applications, with enough frontend experience to support complete web solutions.",
+    "actions": [
+      { "label": "Contact Me", "href": "#contact", "variant": "primary" },
+      { "label": "View Work", "href": "#work", "variant": "secondary" }
+    ]
+  },
+  "proof": {
+    "kicker": "What I bring",
+    "headline": "Focused on backend, comfortable on the frontend.",
+    "items": [
+      "Builds backend logic, databases, and application structure with long-term maintainability in mind.",
+      "Supports frontend work when needed using Vue.js, HTML, CSS, JavaScript, and jQuery.",
+      "Works with version control, team workflows, and business platforms like ServiceNow."
+    ]
+  },
+  "selectedWork": {
+    "kicker": "Selected Work",
+    "headline": "Work built around business logic, stable systems, and maintainable code.",
+    "items": [
+      {
+        "title": "Business Management Platform",
+        "description": "Developed backend features, database structure, and admin workflows for a system used to manage daily operations and reporting.",
+        "stack": ["PHP", "Laravel", "MySQL"]
+      },
+      {
+        "title": "Internal Dashboard Tools",
+        "description": "Built dashboard modules, data handling, and user access features for internal teams that needed clear visibility into operational data.",
+        "stack": ["Laravel", "Vue.js", "JavaScript"]
+      },
+      {
+        "title": "Service Workflow Solutions",
+        "description": "Worked on backend integrations, workflow logic, and platform customization for service-based processes and team requests.",
+        "stack": ["ServiceNow", "Node.js", "TypeScript"]
+      }
+    ]
+  },
+  "personalProjects": {
+    "kicker": "Personal Projects",
+    "headline": "Projects I built to learn, improve, and explore new ideas.",
+    "items": [
+      {
+        "title": "Captured by Jeys",
+        "url": "https://captured-by-jeys.vercel.app",
+        "description": [
+          "Built using Codex AI, this project is a photo sharing platform that allows me to upload, organize, and share my photography work while learning how to integrate AI tools into a web application.",
+          "Includes mobile application features using React Native, and a web dashboard built with Laravel and React.js to manage photos and user interactions."
+        ],
+        "stack": ["Laravel (API)", "React (Front-end and Mobile)", "MySQL/PostgreSQL"]
+      }
+    ]
+  },
+  "skills": {
+    "kicker": "Skills",
+    "headline": "Core technologies and current strength areas.",
+    "groups": [
+      {
+        "title": "Backend",
+        "items": [
+          { "name": "PHP", "rating": "4/5", "percent": 80 },
+          { "name": "Laravel", "rating": "4/5", "percent": 80 },
+          { "name": "MySQL", "rating": "4/5", "percent": 80 },
+          { "name": "Node.js", "rating": "1/5", "percent": 20 },
+          { "name": "TypeScript", "rating": "1/5", "percent": 20 },
+          { "name": "C#", "rating": "1/5", "percent": 20 }
+        ]
+      },
+      {
+        "title": "Frontend",
+        "items": [
+          { "name": "HTML", "rating": "4/5", "percent": 80 },
+          { "name": "CSS", "rating": "4/5", "percent": 80 },
+          { "name": "JavaScript", "rating": "4/5", "percent": 80 },
+          { "name": "jQuery", "rating": "4/5", "percent": 80 },
+          { "name": "Vue.js", "rating": "3/5", "percent": 60 },
+          { "name": "React.js", "rating": "1/5", "percent": 20 }
+        ]
+      },
+      {
+        "title": "Others",
+        "items": [
+          { "name": "Git", "rating": "4/5", "percent": 80 },
+          { "name": "ServiceNow", "rating": "2/5", "percent": 40 }
+        ]
+      }
+    ]
+  },
+  "goals": {
+    "kicker": "Goals",
+    "headline": "Continuing to grow beyond my current backend focus.",
+    "description": "I am continuously exploring other programming languages and technologies to broaden my skill set, strengthen my adaptability, and grow into a more flexible full-stack developer."
+  },
+  "process": {
+    "kicker": "Working Style",
+    "headline": "A practical approach to building backend-driven projects.",
+    "items": [
+      {
+        "title": "Discover",
+        "description": "Understand the workflow, system requirements, and business needs before development starts."
+      },
+      {
+        "title": "Build",
+        "description": "Develop the backend structure, connect data, and support frontend requirements where needed."
+      },
+      {
+        "title": "Improve",
+        "description": "Refine performance, maintainability, and workflow efficiency based on testing and usage."
+      }
+    ]
+  },
+  "contact": {
+    "kicker": "Let's Build",
+    "headline": "Looking for a backend developer who can also support frontend work?",
+    "description": "Available for backend-focused web projects, system improvements, and application support.",
+    "actions": [
+      {
+        "label": "jhaycee34@yahoo.com",
+        "href": "mailto:jhaycee34@yahoo.com",
+        "variant": "primary"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/JLMandap034?tab=repositories",
+        "variant": "secondary",
+        "external": true
+      }
+    ]
+  }
+}
