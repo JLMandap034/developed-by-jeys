@@ -18,8 +18,7 @@
     "eyebrow": "Back-end Developer with Front-end experience.",
     "description": "I build backend systems, databases, and business applications, with enough frontend experience to support complete web solutions.",
     "actions": [
-      { "label": "Contact Me", "href": "#contact", "variant": "primary" },
-      { "label": "View Work", "href": "#work", "variant": "secondary" }
+      { "label": "View Work", "href": "#work", "variant": "primary" }
     ]
   },
   "proof": {
@@ -36,19 +35,27 @@
     "headline": "Work built around business logic, stable systems, and maintainable code.",
     "items": [
       {
-        "title": "Business Management Platform",
-        "description": "Developed backend features, database structure, and admin workflows for a system used to manage daily operations and reporting.",
-        "stack": ["PHP", "Laravel", "MySQL"]
+        "title": "Disaster Tracking Application",
+        "description": [
+          "A mobile application built to track and report disaster events, providing real-time updates and information to users. The backend is built with Laravel to handle data management and API endpoints, while the mobile application is developed using React Native for cross-platform compatibility.",
+          "This project uses information provided by the Federal Government Ageny, State Government Agency, and Local Government Agency of Australia to provide accurate and timely information about disaster events, helping users stay informed and prepared."
+        ],
+        "stack": ["Laravel (API)", "React Native"]
+      },
+      {
+        "title": "Loan Management System",
+        "description": [
+          "Developed backend features, database structure, and admin workflows for a system used to manage loan applications and generation of reports.",
+          "This system is used by the finance department to track loan applications, manage borrower information, and generate reports for analysis and decision-making."
+        ],
+        "stack": ["Laravel", "MySQL"]
       },
       {
         "title": "Internal Dashboard Tools",
-        "description": "Built dashboard modules, data handling, and user access features for internal teams that needed clear visibility into operational data.",
+        "description": [
+          "An inhouse dashboard system that is used to track time-in and time-out, manage employee information, and generate reports for HR and management use."
+        ],
         "stack": ["Laravel", "Vue.js", "JavaScript"]
-      },
-      {
-        "title": "Service Workflow Solutions",
-        "description": "Worked on backend integrations, workflow logic, and platform customization for service-based processes and team requests.",
-        "stack": ["ServiceNow", "Node.js", "TypeScript"]
       }
     ]
   },
@@ -64,6 +71,14 @@
           "Includes mobile application features using React Native, and a web dashboard built with Laravel and React.js to manage photos and user interactions."
         ],
         "stack": ["Laravel (API)", "React (Front-end and Mobile)", "MySQL/PostgreSQL"]
+      },
+      {
+        "title": "School Portal (On-Going)",
+        "description": [
+          "A on-going project to build a school portal system that includes student information management, class scheduling, and communication tools.",
+          "This project is based on my school thesis project and is being developed to improve my skills in building full-stack applications with a focus on backend development and database design."
+        ],
+        "stack": ["Laravel", "Vue.JS", "MySQL"]
       }
     ]
   },
