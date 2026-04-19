@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Analytics } from "@vercel/analytics/react"
 
 const dataUrl = "/data/portfolio.json";
 
@@ -184,6 +185,7 @@ export default function App() {
 
   return (
     <div className="page-shell">
+      <Analytics />
       <header className="site-header">
         <a className="brand" href="#top">
           <img className="brand-logo" src={portfolio.brand.logo} alt={portfolio.brand.logoAlt} />
