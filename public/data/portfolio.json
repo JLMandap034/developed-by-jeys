@@ -76,10 +76,18 @@
         "title": "School Portal",
         "url": "https://school-portal-project.vercel.app",
         "description": [
-          "A on-going project to build a school portal system that includes student information management, class scheduling, and communication tools.",
-          "This project is based on my school thesis project and is being developed to improve my skills in building full-stack applications with a focus on backend development and database design."
+          "A school portal system that includes student information management, class scheduling, and communication tools.",
+          "This project is based on my school thesis project to improve my skills in building applications with a focus on frontend development."
         ],
         "stack": ["ReactJS"]
+      },
+      {
+        "title": "Daily Habit Tracker",
+        "description": [
+          "A daily habit tracking application that allows users to set goals, track their progress, and generate reports on their habits over time.",
+          "This project is aimed at improving my skills in building full-stack applications with a focus on backend development and database design."
+        ],
+        "stack": ["Laravel", "Vue.js", "MySQL"]
       }
     ]
   },
