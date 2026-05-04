@@ -8,7 +8,8 @@
     "logoAlt": "JEYS logo"
   },
   "navigation": [
-    { "label": "Work", "href": "#work" },
+    { "label": "Projects", "href": "#work" },
+    { "label": "Experience", "href": "#experience" },
     { "label": "Stack", "href": "#stack" },
     { "label": "Process", "href": "#process" },
     { "label": "Contact", "href": "#contact" }

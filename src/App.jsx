@@ -3,6 +3,21 @@ import { Analytics } from "@vercel/analytics/react"
 
 const dataUrl = "/data/portfolio.json";
 const LOADER_SHOWCASE_DELAY_MS = 3000;
+const THEME_STORAGE_KEY = "portfolio-theme";
+
+function getInitialTheme() {
+  if (typeof window === "undefined") {
+    return "dark";
+  }
+
+  const storedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
+
+  if (storedTheme === "light" || storedTheme === "dark") {
+    return storedTheme;
+  }
+
+  return window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+}
 
 function wait(ms) {
   return new Promise((resolve) => {
@@ -114,6 +129,8 @@ function SkillGroup({ group }) {
 export default function App() {
   const [portfolio, setPortfolio] = useState(null);
   const [error, setError] = useState("");
+  const [activeSection, setActiveSection] = useState("");
+  const [theme, setTheme] = useState(getInitialTheme);
 
   useEffect(() => {
     let cancelled = false;
@@ -147,6 +164,12 @@ export default function App() {
       cancelled = true;
     };
   }, []);
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    document.documentElement.style.colorScheme = theme;
+    window.localStorage.setItem(THEME_STORAGE_KEY, theme);
+  }, [theme]);
 
   useEffect(() => {
     if (!portfolio) {
@@ -191,6 +214,76 @@ export default function App() {
     };
   }, [portfolio]);
 
+  useEffect(() => {
+    if (!portfolio) {
+      return;
+    }
+
+    const navSections = portfolio.navigation
+      .map((item) => {
+        const id = item.href.replace("#", "");
+
+        return {
+          id,
+          element: id ? document.getElementById(id) : null,
+        };
+      })
+      .filter((item) => item.id && item.element);
+
+    const sectionIds = navSections.map((item) => item.id);
+    const sections = navSections.map((item) => item.element);
+
+    if (!sections.length) {
+      return;
+    }
+
+    let frameId = 0;
+    const lastSectionIndex = sectionIds.length - 1;
+    const header = document.querySelector(".site-header");
+
+    function updateActiveSection() {
+      const headerHeight = header instanceof HTMLElement ? header.offsetHeight : 0;
+      const anchorLine = headerHeight + 72;
+      let nextActiveSection = sectionIds[0];
+
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 24) {
+        nextActiveSection = sectionIds[lastSectionIndex];
+      } else {
+        for (let index = lastSectionIndex; index >= 0; index -= 1) {
+          const sectionTop = sections[index].getBoundingClientRect().top;
+
+          if (sectionTop <= anchorLine) {
+            nextActiveSection = sectionIds[index];
+            break;
+          }
+        }
+      }
+
+      setActiveSection((currentSection) => currentSection === nextActiveSection ? currentSection : nextActiveSection);
+    }
+
+    function scheduleActiveSectionUpdate() {
+      window.cancelAnimationFrame(frameId);
+      frameId = window.requestAnimationFrame(updateActiveSection);
+    }
+
+    scheduleActiveSectionUpdate();
+    window.addEventListener("scroll", scheduleActiveSectionUpdate, { passive: true });
+    window.addEventListener("resize", scheduleActiveSectionUpdate);
+    window.addEventListener("hashchange", scheduleActiveSectionUpdate);
+
+    return () => {
+      window.cancelAnimationFrame(frameId);
+      window.removeEventListener("scroll", scheduleActiveSectionUpdate);
+      window.removeEventListener("resize", scheduleActiveSectionUpdate);
+      window.removeEventListener("hashchange", scheduleActiveSectionUpdate);
+    };
+  }, [portfolio]);
+
+  function handleThemeToggle() {
+    setTheme((currentTheme) => (currentTheme === "dark" ? "light" : "dark"));
+  }
+
   if (error) {
     return (
       <main className="status-shell">
@@ -208,22 +301,49 @@ export default function App() {
   }
 
   return (
-    <div className="page-shell">
+    <>
       <Analytics />
       <header className="site-header">
-        <a className="brand" href="#top">
-          <img className="brand-logo" src={portfolio.brand.logo} alt={portfolio.brand.logoAlt} />
-        </a>
-        <nav className="site-nav" aria-label="Primary">
-          {portfolio.navigation.map((item) => (
-            <a href={item.href} key={item.href}>
-              {item.label}
-            </a>
-          ))}
-        </nav>
+        <div className="site-header-inner">
+          <a className="brand" href="#top">
+            <img className="brand-logo" src={portfolio.brand.logo} alt={portfolio.brand.logoAlt} />
+          </a>
+          <div className="header-controls">
+            <nav className="site-nav" aria-label="Primary">
+              {portfolio.navigation.map((item) => {
+                const sectionId = item.href.replace("#", "");
+                const isActive = activeSection === sectionId;
+
+                return (
+                  <a
+                    className={isActive ? "is-active" : ""}
+                    href={item.href}
+                    key={item.href}
+                    aria-current={isActive ? "location" : undefined}
+                    onClick={() => setActiveSection(sectionId)}
+                  >
+                    {item.label}
+                  </a>
+                );
+              })}
+            </nav>
+            <button
+              className="theme-switch"
+              type="button"
+              aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+              aria-pressed={theme === "light"}
+              onClick={handleThemeToggle}
+            >
+              <span className="theme-switch-track">
+                <span className="theme-switch-thumb" />
+              </span>
+            </button>
+          </div>
+        </div>
       </header>
 
-      <main id="top">
+      <div className="page-shell">
+        <main id="top">
         <section className="hero">
           <div className="hero-layout reveal">
             {portfolio.hero.image?.src ? (
@@ -285,9 +405,11 @@ export default function App() {
               <PortfolioItem item={item} index={index} key={item.title} />
             ))}
           </div>
+        </section>
 
+        <section className="experience reveal" id="experience">
           {portfolio.workExperience?.items?.length ? (
-            <>
+            <div className="work-experience-block">
               <SectionHeading
                 className="work-subheading"
                 kicker={portfolio.workExperience.kicker}
@@ -302,7 +424,7 @@ export default function App() {
                   />
                 ))}
               </div>
-            </>
+            </div>
           ) : null}
         </section>
 
@@ -351,7 +473,8 @@ export default function App() {
             ))}
           </div>
         </section>
-      </main>
-    </div>
+        </main>
+      </div>
+    </>
   );
 }
