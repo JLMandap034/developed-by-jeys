@@ -18,8 +18,13 @@
     "eyebrow": "Back-end Developer with Front-end experience.",
     "description": "I build backend systems, databases, and business applications, with enough frontend experience to support complete web solutions.",
     "actions": [
-      { "label": "View Work", "href": "#work", "variant": "primary" }
-    ]
+      { "label": "View Work", "href": "#work", "variant": "primary" },
+      { "label": "View CV", "href": "Mandap Jay Cee L - Resume.pdf", "variant": "secondary" }
+    ],
+    "image": {
+      "src": "/hero-pic.jpg",
+      "alt": "Portrait of Jeys"
+    }
   },
   "proof": {
     "kicker": "What I bring",
@@ -73,12 +78,96 @@
         "stack": ["Laravel (API)", "React (Front-end and Mobile)", "MySQL/PostgreSQL"]
       },
       {
-        "title": "School Portal (On-Going)",
+        "title": "School Portal",
+        "url": "https://school-portal-project.vercel.app",
         "description": [
-          "A on-going project to build a school portal system that includes student information management, class scheduling, and communication tools.",
-          "This project is based on my school thesis project and is being developed to improve my skills in building full-stack applications with a focus on backend development and database design."
+          "A school portal system that includes student information management, class scheduling, and communication tools.",
+          "This project is based on my school thesis project to improve my skills in building applications with a focus on frontend development."
         ],
-        "stack": ["Laravel", "Vue.JS", "MySQL"]
+        "stack": ["ReactJS"]
+      },
+      {
+        "title": "Daily Habit Tracker",
+        "description": [
+          "A daily habit tracking application that allows users to set goals, track their progress, and generate reports on their habits over time.",
+          "This project is aimed at improving my skills in building full-stack applications with a focus on backend development and database design."
+        ],
+        "stack": ["Laravel", "Vue.js", "MySQL"]
+      }
+    ]
+  },
+  "workExperience": {
+    "kicker": "Work Experience",
+    "headline": "Career experience from web development into enterprise platform support.",
+    "items": [
+      {
+        "company": "EY GDS (CS) Philippines Inc.",
+        "position": "ServiceNow Developer",
+        "period": "November 2025 - Present",
+        "description": [
+          "Support and enhance ServiceNow instances through scripting and flow development.",
+          "Create KT documents for user stories."
+        ]
+      },
+      {
+        "company": "Accenture Inc.",
+        "position": "App/Cloud Support Senior Analyst",
+        "period": "June 2024 - October 2025",
+        "description": [
+          "Supported and enhanced ServiceNow ITSM modules including Incident, Change, Request, and Knowledge Management.",
+          "Designed, developed, and optimized ITSM processes to improve efficiency and service quality."
+        ]
+      },
+      {
+        "company": "Yondu Inc.",
+        "position": "Software Engineer (PHP)",
+        "period": "November 2021 - May 2024",
+        "description": [
+          "Worked with a variety of teams to meet the needs of different clients.",
+          "Provided timely and professional client communication.",
+          "Coordinated with a team to ensure that project deliverables met client expectations."
+        ]
+      },
+      {
+        "company": "ALYALE Philippines Inc.",
+        "position": "PHP Developer",
+        "period": "March 2021 - November 2021",
+        "description": [
+          "Contributed to the initial design and development of projects.",
+          "Coordinated with the team to ensure project deliverables met client expectations."
+        ]
+      },
+      {
+        "company": "Dottystyle Creative Co.",
+        "position": "Back-end Developer",
+        "period": "October 2019 - January 2021",
+        "description": [
+          "Adapted agile methodology to meet project needs.",
+          "Provided timely and professional client communication.",
+          "Worked with a team of engineers to develop and improve the functionality and performance of web and mobile applications.",
+          "Conducted unit testing and participated in code reviews to help maintain code quality.",
+          "Debugged and resolved issues in a timely and efficient manner."
+        ]
+      },
+      {
+        "company": "Praxxys Solutions Inc.",
+        "position": "Back-end Web Developer",
+        "period": "April 2019 - October 2019",
+        "description": [
+          "Contributed to the successful testing of applications.",
+          "Worked with a team of engineers to improve the functionality and performance of web and mobile applications."
+        ]
+      },
+      {
+        "company": "Serbisyo Outsourcing Facilities Inc.",
+        "position": "Web Developer",
+        "period": "August 2018 - March 2019",
+        "description": [
+          "Performed routine maintenance tasks such as bug fixes and performance enhancements.",
+          "Identified and resolved software defects to support reliable production releases.",
+          "Developed and executed queries to generate reports.",
+          "Coordinated with team members to help keep the main server working properly."
+        ]
       }
     ]
   },

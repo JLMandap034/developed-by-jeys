@@ -2,6 +2,13 @@ import { useEffect, useState } from "react";
 import { Analytics } from "@vercel/analytics/react"
 
 const dataUrl = "/data/portfolio.json";
+const LOADER_SHOWCASE_DELAY_MS = 3000;
+
+function wait(ms) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+}
 
 function SectionHeading({ kicker, headline, className = "" }) {
   return (
@@ -12,7 +19,7 @@ function SectionHeading({ kicker, headline, className = "" }) {
   );
 }
 
-function WorkItem({ index, item }) {
+function PortfolioItem({ index, item }) {
   return (
     <article className="work-item">
       <span className="work-index">{String(index + 1).padStart(2, "0")}</span>
@@ -37,28 +44,49 @@ function WorkItem({ index, item }) {
   );
 }
 
-function PersonalProjectItem({ index, item }) {
+function ExperienceTimelineItem({ item, isLast }) {
+  const descriptions = Array.isArray(item.description) ? item.description : [item.description];
+
   return (
-    <article className="work-item">
-      <span className="work-index">{String(index + 1).padStart(2, "0")}</span>
-      <div>
-        <h3>
-          {item.url ? (
-            <a href={item.url} target="_blank" rel="noopener noreferrer">
-              <u>{item.title}</u>
-            </a>
-          ) : (
-            item.title
-          )}
-        </h3>
-        {item.description.map((paragraph) => (
-          <p key={paragraph} className="project-paragraph">
-            {paragraph}
-          </p>
-        ))}
+    <article className={`experience-item ${isLast ? "is-last" : ""}`.trim()}>
+      <div className="experience-marker" aria-hidden="true">
+        <span className="experience-dot" />
       </div>
-      <p className="work-stack">{item.stack.join(" / ")}</p>
+      <div className="experience-card">
+        <div className="experience-meta">
+          <p className="experience-company">{item.company}</p>
+          {item.period ? <p className="experience-period">{item.period}</p> : null}
+        </div>
+        <h3 className="experience-position">{item.position}</h3>
+        <ul className="experience-description-list">
+          {descriptions.map((paragraph) => (
+            <li className="experience-description-item" key={`${item.company}-${paragraph}`}>
+              {paragraph}
+            </li>
+          ))}
+        </ul>
+      </div>
     </article>
+  );
+}
+
+function LoadingState() {
+  return (
+    <main className="loader-shell" aria-busy="true" aria-live="polite">
+      <section className="loader-panel" role="status">
+        <div className="loader-glyphs" aria-hidden="true">
+          <span>{"<"}</span>
+          <span>{"/>"}</span>
+          <span>{"{}"}</span>
+        </div>
+        <div className="loader-terminal" aria-hidden="true">
+          <span className="loader-prompt">&gt;</span>
+          <span className="loader-command">bootPortfolio()</span>
+          <span className="loader-cursor" />
+        </div>
+        <p className="loader-copy">Preparing portfolio data...</p>
+      </section>
+    </main>
   );
 }
 
@@ -92,7 +120,10 @@ export default function App() {
 
     async function loadPortfolio() {
       try {
-        const response = await fetch(dataUrl);
+        const [response] = await Promise.all([
+          fetch(dataUrl),
+          wait(LOADER_SHOWCASE_DELAY_MS),
+        ]);
 
         if (! response.ok) {
           throw new Error(`Failed to load portfolio data (${response.status}).`);
@@ -173,14 +204,7 @@ export default function App() {
   }
 
   if (!portfolio) {
-    return (
-      <main className="status-shell">
-        <section className="status-card reveal is-visible">
-          <p className="section-kicker">Loading</p>
-          <h1>Preparing portfolio data...</h1>
-        </section>
-      </main>
-    );
+    return <LoadingState />;
   }
 
   return (
@@ -201,16 +225,27 @@ export default function App() {
 
       <main id="top">
         <section className="hero">
-          <div className="hero-copy reveal">
-            <p className="hero-intro">{portfolio.hero.intro}</p>
-            <p className="eyebrow">{portfolio.hero.eyebrow}</p>
-            <p className="hero-text">{portfolio.hero.description}</p>
-            <div className="hero-actions">
-              {portfolio.hero.actions.map((action) => (
-                <a className={`button button-${action.variant}`} href={action.href} key={action.label}>
-                  {action.label}
-                </a>
-              ))}
+          <div className="hero-layout reveal">
+            {portfolio.hero.image?.src ? (
+              <div className="hero-media">
+                <img
+                  className="hero-photo"
+                  src={portfolio.hero.image.src}
+                  alt={portfolio.hero.image.alt ?? portfolio.hero.intro}
+                />
+              </div>
+            ) : null}
+            <div className="hero-copy">
+              <p className="hero-intro">{portfolio.hero.intro}</p>
+              <p className="eyebrow">{portfolio.hero.eyebrow}</p>
+              <p className="hero-text">{portfolio.hero.description}</p>
+              <div className="hero-actions">
+                {portfolio.hero.actions.map((action) => (
+                  <a className={`button button-${action.variant}`} href={action.href} key={action.label}>
+                    {action.label}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -236,7 +271,7 @@ export default function App() {
           />
           <div className="work-list">
             {portfolio.selectedWork.items.map((item, index) => (
-              <WorkItem item={item} index={index} key={item.title} />
+              <PortfolioItem item={item} index={index} key={item.title} />
             ))}
           </div>
 
@@ -247,9 +282,28 @@ export default function App() {
           />
           <div className="work-list">
             {portfolio.personalProjects.items.map((item, index) => (
-              <PersonalProjectItem item={item} index={index} key={item.title} />
+              <PortfolioItem item={item} index={index} key={item.title} />
             ))}
           </div>
+
+          {portfolio.workExperience?.items?.length ? (
+            <>
+              <SectionHeading
+                className="work-subheading"
+                kicker={portfolio.workExperience.kicker}
+                headline={portfolio.workExperience.headline}
+              />
+              <div className="experience-timeline">
+                {portfolio.workExperience.items.map((item, index) => (
+                  <ExperienceTimelineItem
+                    item={item}
+                    isLast={index === portfolio.workExperience.items.length - 1}
+                    key={`${item.company}-${item.position}`}
+                  />
+                ))}
+              </div>
+            </>
+          ) : null}
         </section>
 
         <section className="stack reveal" id="stack">
