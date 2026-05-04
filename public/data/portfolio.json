@@ -75,7 +75,7 @@
         "url": "https://captured-by-jeys.vercel.app",
         "admin": "https://captured-by-jeys-backend.onrender.com/admin",
         "description": [
-          "Built using Codex AI, this project is a photo sharing platform that allows me to upload, organize, and share my photography work while learning how to integrate AI tools into a web application.",
+          "This project is a photo sharing platform that allows me to upload, organize, and share my photography work while learning how to integrate AI tools into a web application.",
           "Includes mobile application features using React Native, and a web dashboard built with Laravel and React.js to manage photos and user interactions.",
           "Note: The admin panel is currently hosted on a free-tier service and may take some time to wake up when accessed."
         ],
