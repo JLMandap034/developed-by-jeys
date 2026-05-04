@@ -47,6 +47,14 @@ function PortfolioItem({ index, item }) {
           ) : (
             item.title
           )}
+          {item.admin ? " / " : ""}
+          {item.admin ? (
+            <a href={item.admin} target="_blank" rel="noopener noreferrer">
+              <u>Admin Panel</u>
+            </a>
+          ) : (
+            ""
+          )}
         </h3>
         {item.description.map((paragraph) => (
           <p key={paragraph} className="project-paragraph">
@@ -300,13 +308,17 @@ export default function App() {
     return <LoadingState />;
   }
 
+  const brandLogo = theme === "light"
+    ? portfolio.brand.logoLight ?? portfolio.brand.logo
+    : portfolio.brand.logo;
+
   return (
     <>
       <Analytics />
       <header className="site-header">
         <div className="site-header-inner">
           <a className="brand" href="#top">
-            <img className="brand-logo" src={portfolio.brand.logo} alt={portfolio.brand.logoAlt} />
+            <img className="brand-logo" src={brandLogo} alt={portfolio.brand.logoAlt} />
           </a>
           <div className="header-controls">
             <nav className="site-nav" aria-label="Primary">

@@ -1,8 +1,25 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="iconShell" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#28181c" />
+      <stop offset="100%" stop-color="#171113" />
+    </linearGradient>
+    <linearGradient id="iconOutline" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f09a91" />
+      <stop offset="100%" stop-color="#7b4a4e" />
+    </linearGradient>
+    <linearGradient id="iconGlyph" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff8f5" />
+      <stop offset="55%" stop-color="#f3dfd8" />
+      <stop offset="100%" stop-color="#d36f6d" />
+    </linearGradient>
+  </defs>
+
+  <rect x="6" y="6" width="52" height="52" rx="16" fill="url(#iconShell)" stroke="url(#iconOutline)" stroke-width="2" />
   <path
     d="M24 22 14 32l10 10M40 22l10 10-10 10M35 18 29 46"
     fill="none"
-    stroke="#f6efed"
+    stroke="url(#iconGlyph)"
     stroke-linecap="round"
     stroke-linejoin="round"
     stroke-width="4"

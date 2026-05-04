@@ -5,6 +5,7 @@
   },
   "brand": {
     "logo": "/favicon.svg",
+    "logoLight": "/favicon-light.svg",
     "logoAlt": "JEYS logo"
   },
   "navigation": [

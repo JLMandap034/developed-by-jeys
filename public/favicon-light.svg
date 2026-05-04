@@ -4,13 +4,9 @@
     font-size="50"
     font-weight="800"
     letter-spacing="-2"
-    paint-order="stroke"
-    stroke="#241316"
-    stroke-linejoin="round"
-    stroke-width="2.6"
   >
-    <text x="8" y="50" fill="#f09a91">&lt;/</text>
-    <text x="60" y="50" fill="#fff6f2">JEYS</text>
-    <text x="165" y="50" fill="#f09a91">&gt;</text>
+    <text x="8" y="50" fill="#b55555">&lt;/</text>
+    <text x="60" y="50" fill="#2f1d1c">JEYS</text>
+    <text x="165" y="50" fill="#b55555">&gt;</text>
   </g>
 </svg>
