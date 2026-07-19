@@ -105,9 +105,17 @@
     "headline": "Career experience from web development into enterprise platform support.",
     "items": [
       {
+        "company": "Global Payments Inc.",
+        "position": "ServiceNow Integration Admin Developer",
+        "period": "June 2026 - Present",
+        "description": [
+          "Create KT Documents for API Integrations Development."
+        ]
+      },
+      {
         "company": "EY GDS (CS) Philippines Inc.",
         "position": "ServiceNow Developer",
-        "period": "November 2025 - Present",
+        "period": "November 2025 - May 2026",
         "description": [
           "Support and enhance ServiceNow instances through scripting and flow development.",
           "Create KT documents for user stories."
